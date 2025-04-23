@@ -1,11 +1,15 @@
 #! /bin/bash
+###########################################################################################################################################
+# Init logger
+###########################################################################################################################################
+# log things path
+LOGFILE="logfile.log"
+
+exec > >(tee -a $LOGFILE) 2>&1
 
 ###########################################################################################################################################
 # Variables
 ###########################################################################################################################################
-# init log things
-LOGFILE="logfile.log"
-
 # Pacamn Packages
 PACKAGES=$(cat config-files/packages/packages.conf)
 CUSTOM_PACKAGES=$(cat custom-settings/custom_packages.conf)
@@ -23,7 +27,6 @@ update_timestamp() {
 
 write_log() {
     update_timestamp
-    echo -e "$TIME\t$1" >> $LOGFILE
     echo -e "$TIME\t$1"
 }
 
@@ -31,7 +34,6 @@ write_log() {
 # Install packages
 ###########################################################################################################################################
 # Install packages from pacman
-
 write_log "installing packages of of pacman"
 sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES
 
@@ -89,10 +91,9 @@ mkdir ~/gtk-3.0
 cp config-files/gtk/settings.ini ~/.config/gtk-3.0/settings.ini
 cp config-files/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
 mkdir -p ~/.icons/default/
-cp config-files/index.theme ~/.icons/default/index.theme
+cp config-files/gtk/index.theme ~/.icons/default/index.theme
 mkdir -p ~/.config/xsettingsd/
 cp config-files/gtk/xsettingsd.conf ~/.config/xsettingsd/xsettingsd.conf
-
 
 # Finished setup
 write_log "Finished setup"
