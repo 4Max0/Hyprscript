@@ -33,7 +33,7 @@ write_log() {
 # Install packages from pacman
 
 write_log "installing packages of of pacman"
-sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES --noconfirm
+sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES
 
 write_log "checking for yay"
 # Install yay if not already
@@ -64,7 +64,7 @@ sudo systemctl enable sddm.service
 write_log "copying sddm config files into directories"
 sudo cp -p config-files/sddm/sddm.conf /etc/sddm.conf
 sudo cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
-sudo cp -p custom-settings/wallpaper.jpg /usr/share/sddm/themes/sugar-candy/Backgrounds/
+sudo cp -p custom-settings/wallpaper.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
 
 # Waybar configs
 write_log "copying Waybar config files into directories"
@@ -72,12 +72,12 @@ sudo cp -rf config-files/waybar/ ~/.config/waybar/
 
 # Hyprland and extra configs
 write_log "copying Hyprland config files into directories"
-sudo cp -rf config-files/hypr/ ~/.config/hypr/
+sudo cp -rf config-files/hypr/ ~/.config/
 
 # Move the Desktop Wallpaper
 write_log "Copying the wallpaper into the directory"
 sudo mkdir -p ~/Pictures/wallpapers
-sudo cp custom-settings/wallpaper.jpg ~/Pictures/wallpapers/wallpaper.jpg
+sudo cp custom-settings/wallpaper.png ~/Pictures/wallpapers/wallpaper.png
 
 # Finished setup
 write_log "Finished setup"
