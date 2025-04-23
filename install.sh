@@ -62,21 +62,23 @@ sudo systemctl enable sddm.service
 ###########################################################################################################################################
 # sddm configs
 write_log "copying sddm config files into directories"
-sudo cp config-files/sddm/sddm.conf /etc/sddm.conf
-sudo cp config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
-sudo cp custom_packages/wallpaper.jpg /usr/share/sddm/themes/sugar-candy/Backgrounds/
+sudo cp -p config-files/sddm/sddm.conf /etc/sddm.conf
+sudo cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
+sudo cp -p custom-settings/wallpaper.jpg /usr/share/sddm/themes/sugar-candy/Backgrounds/
 
 # Waybar configs
 write_log "copying Waybar config files into directories"
-cp config-files/waybar/* ~/.config/waybar/
+sudo cp -rf config-files/waybar/ ~/.config/waybar/
 
 # Hyprland and extra configs
 write_log "copying Hyprland config files into directories"
-cp config-files/hypr/* ~/.config/hypr/
+sudo cp -rf config-files/hypr/ ~/.config/hypr/
 
 # Move the Desktop Wallpaper
 write_log "Copying the wallpaper into the directory"
-cp custom-settings/wallpaper.jpg ~/Pictures/wallpapers/wallpaper.jpg
+sudo mkdir -p ~/Pictures/wallpapers
+sudo cp custom-settings/wallpaper.jpg ~/Pictures/wallpapers/wallpaper.jpg
 
 # Finished setup
 write_log "Finished setup"
+write_log "Restart the system for the changes to take full effect"
