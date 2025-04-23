@@ -79,6 +79,21 @@ write_log "Copying the wallpaper into the directory"
 sudo mkdir -p ~/Pictures/wallpapers
 sudo cp custom-settings/wallpaper.png ~/Pictures/wallpapers/wallpaper.png
 
+# qt6ct config files
+write_log "Copying the qt6ct config files"
+sudo cp -rf config-files/qt6ct ~/.config
+
+# GTK config files
+write_log "Copying the GTK config files"
+mkdir ~/gtk-3.0
+cp config-files/gtk/settings.ini ~/.config/gtk-3.0/settings.ini
+cp config-files/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
+mkdir -p ~/.icons/default/
+cp config-files/index.theme ~/.icons/default/index.theme
+mkdir -p ~/.config/xsettingsd/
+cp config-files/gtk/xsettingsd.conf ~/.config/xsettingsd/xsettingsd.conf
+
+
 # Finished setup
 write_log "Finished setup"
 write_log "Restart the system for the changes to take full effect"
