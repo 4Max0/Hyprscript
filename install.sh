@@ -2,7 +2,7 @@
 ###########################################################################################################################################
 # Init logger
 ###########################################################################################################################################
-# log things path
+# logfile path
 LOGFILE="logfile.log"
 
 exec > >(tee -a $LOGFILE) 2>&1
@@ -76,6 +76,12 @@ sudo cp -rf config-files/waybar/ ~/.config/waybar/
 write_log "copying Hyprland config files into directories"
 sudo cp -rf config-files/hypr/ ~/.config/
 
+
+# Hyprshot screenshot directory
+write_log "create Hyprshot Screenshot Directory"
+sudo mkdir -p ~/Pictures/Screenshots
+sudo chown $USER:$USER ~/Pictures/Screenshots
+
 # Move the Desktop Wallpaper
 write_log "Copying the wallpaper into the directory"
 sudo mkdir -p ~/Pictures/wallpapers
@@ -87,13 +93,13 @@ sudo cp -rf config-files/qt6ct ~/.config
 
 # GTK config files
 write_log "Copying the GTK config files"
-mkdir ~/gtk-3.0
-cp config-files/gtk/settings.ini ~/.config/gtk-3.0/settings.ini
-cp config-files/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
-mkdir -p ~/.icons/default/
-cp config-files/gtk/index.theme ~/.icons/default/index.theme
-mkdir -p ~/.config/xsettingsd/
-cp config-files/gtk/xsettingsd.conf ~/.config/xsettingsd/xsettingsd.conf
+sudo mkdir ~/gtk-3.0
+sudo cp config-files/gtk/settings.ini ~/.config/gtk-3.0/settings.ini
+sudo cp config-files/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
+sudo mkdir -p ~/.icons/default/
+sudo cp config-files/gtk/index.theme ~/.icons/default/index.theme
+sudo mkdir -p ~/.config/xsettingsd/
+sudo cp config-files/gtk/xsettingsd.conf ~/.config/xsettingsd/xsettingsd.conf
 
 # Finished setup
 write_log "Finished setup"
