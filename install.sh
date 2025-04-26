@@ -93,7 +93,7 @@ sudo cp -rf config-files/qt6ct ~/.config
 
 # GTK config files
 write_log "Copying the GTK config files"
-sudo mkdir ~/gtk-3.0
+sudo mkdir -p ~/.config/gtk-3.0
 sudo cp config-files/gtk/settings.ini ~/.config/gtk-3.0/settings.ini
 sudo cp config-files/gtk/.gtkrc-2.0 ~/.gtkrc-2.0
 sudo mkdir -p ~/.icons/default/
