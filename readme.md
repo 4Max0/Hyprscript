@@ -1,7 +1,7 @@
 # About this project:
 
 Hyprscript is supposed to be a Hyprland install script. You will be able to install and use Hyprscript, after you install Arch Linux on your device via Archinstall for example.
-What Hyprscript does, is that it install Packages and Configs and configures them so you don't have to install and configure your Hyprland on Arch Linux manually. [More Details here.](#what-is-being-installed)
+What Hyprscript does, is that it install Packages and Configs and configures them, so you don't have to install and configure your Hyprland on Arch Linux manually. [More Details here.](#what-is-being-installed)
 
 > [!CAUTION]
 > It is currently in the works still (as of the 25.04.2025).
@@ -30,7 +30,7 @@ Install your Arch Linux and git then copy the repository with the following comm
 git clone https://github.com/4Max0/Hyprscript.git
 ```
 
-After that move into the directory and run the install shell command:
+After that move into the directory and run the install shell script:
 ```
 cd Hyprscript
 bash install.sh
@@ -43,7 +43,7 @@ rm -rf Hyprscript
 ```
 
 ## What to do if an error occurs:
-If you encouter an error the install script generates a logfile called 'logfile.log' in the Hyprscript directory. If you encouter an error, try to open in and look around for errors. Example using everyone favorite editor vim:
+The install script generates a logfile called 'logfile.log' in the Hyprscript directory. If you encounter an error, try to open in and look around for errors. Example using everyone favorite editor vim:
 
 ```
 vim logfile.log
@@ -53,7 +53,7 @@ vim logfile.log
 
 If you are rightfully paranoid, what this Project does to your PC, you might want to check the [config files](config-files/) and the [custom settings](custom-settings/) directories.
 
-In the config files directory you wild find a bunch of, guess what, config files. with also a directory called [packages](config-files/packages/), where you can look at all the necessary pacman and yay packages that are being installed (yes htop and fastfetch are necessary if you use linux).
+In the config files directory you wild find a bunch of, guess what, config files. With also a directory called [packages](config-files/packages/), where you can look at all the necessary pacman and yay packages that are being installed (yes htop and fastfetch are necessary if you use linux).
 
 In similar fashion you will find in the custom-settings directory in two files called [custom_packages.conf](custom-settings/custom_packages.conf) and [yay_custom_packages.conf](custom-settings/yay_custom_packages.conf). In those files you can add or remove packages, if you want before running the script.
 
