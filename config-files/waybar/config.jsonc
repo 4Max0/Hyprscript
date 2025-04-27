@@ -23,8 +23,10 @@
         "memory",
         "battery",
         "network",
+        "custom/bluetooth",
         "pulseaudio",
-        "custom/power"
+        "custom/power",
+        ""
     ],
 
     "hyprland/workspaces": {
@@ -50,7 +52,7 @@
     },
 
     "cpu": {
-        "format": "cpu {usage}%",
+        "format": "CPU {usage}%",
         "interval": 2,
 
         "states": {
@@ -59,7 +61,7 @@
     },
 
     "memory": {
-        "format": "mem {percentage}%",
+        "format": "MEM {percentage}%",
         "interval": 2,
 
         "states": {
@@ -68,7 +70,7 @@
     },
 
     "battery": {
-        "format": "bat {capacity}%",
+        "format": "BAT {capacity}%",
         "interval": 5,
         "states": {
             "warning": 20,
@@ -78,8 +80,8 @@
     },
 
     "network": {
-        "format-wifi" : "wifi {bandwidthDownBits}",
-        "format-ethernet": "enth {bandwidthDownBits}",
+        "format-wifi" : "WIFI | ↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
+        "format-ethernet": "ETH | ↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
         "format-disconnected" : "no network",
         "interval": 5,
         "tooltip": false
@@ -88,22 +90,31 @@
     "pulseaudio": {
         "scroll-step": 5,
         "max-volume": 150,
-        "format": "vol {volume}%",
-        "format-bluetooth": "vol {volume}%",
+        "tooltip": true,
+        "tooltip-format": "Scroll to lower or higher volume",
+        "format": "Vol {volume}%",
+        "format-bluetooth": "Vol {volume}%",
         "nospacing": 1,
-        "on-click": "hyprctl dispatch exec ['float'] pavucontrol",
-        "tooltip": false
+        "on-click": "hyprctl dispatch exec ['float'] pavucontrol"
     },
 
     "custom/power": {
         "format": "⏻ Power",
-        "tooltip": false,
+        "tooltip": true,
+        "tooltip-format": "Power settings",
         "menu": "on-click",
         "menu-file": "~/.config/waybar/power_menu.xml",
         "menu-actions": {
-            "shutdown": "shutdown now",
-            "reboot": "shutdown now -r",
+            "shutdown": "systemctl poweroff",
+            "reboot": "systemctl reboot",
             "sleep": "systemctl sleep"
         }
+    },
+
+    "custom/bluetooth": {
+        "format": "BT",
+        "tooltip": true,
+        "tooltip-format": "Bluetooth Settings",
+        "on-click": "hyprctl dispatch exec ['float'] blueberry" // float doesn't work for some reason
     }
 }

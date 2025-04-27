@@ -32,7 +32,8 @@ tooltip label {
 #battery,
 #network,
 #pulseaudio,
-#custom-power {
+#custom-power,
+#custom-bluetooth {
     margin: 6px 6px 6px 0px;
     padding: 2px 8px;
 }
@@ -87,6 +88,7 @@ tooltip label {
 #cpu,
 #memory,
 #network,
+#custom-bluetooth,
 #pulseaudio,
 #custom-power {
     background-color: #ddc7a1;
