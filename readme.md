@@ -4,7 +4,8 @@ Hyprscript is supposed to be a Hyprland install script. You will be able to inst
 What Hyprscript does, is that it install Packages and Configs and configures them, so you don't have to install and configure your Hyprland on Arch Linux manually. [More Details here.](#what-is-being-installed)
 
 > [!CAUTION]
-> It is currently in the works still (as of the 25.04.2025).
+> It is currently in the works still (as of the 28.04.2025).
+> The install.sh also doesn't support error handling yet so if there is something that doesn't work for any reason it will not notify you and stop instead it will keep going as it is a bash script.
 
 > [!IMPORTANT]
 > Like mentioned [here](config-files/Disclaimer.md), the Waybar config files are based on the config 
@@ -53,7 +54,7 @@ vim logfile.log
 
 # What is being installed:
 
-If you are rightfully paranoid, what this Project does to your PC, you might want to check the [config files](config-files/) and the [custom settings](custom-settings/) directories.
+If you are rightfully paranoid, with what this Project does to your PC, you might want to check the [config files](config-files/) and the [custom settings](custom-settings/) directories.
 
 In the config files directory you wild find a bunch of, guess what, config files. With also a directory called [packages](config-files/packages/), where you can look at all the necessary Pacman and yay packages that are being installed (yes HTop and Fastfetch are necessary if you use Linux).
 
