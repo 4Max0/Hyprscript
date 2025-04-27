@@ -16,10 +16,10 @@ Here are some Preview Pictures to look at:
 
 ### Picture of the Desktop
 
-![Alternativtext](.doc/2025-04-24-013815_hyprshot.png)
+![Alternativtext](.doc/2025-04-27-234330_hyprshot.png)
 
 ### Picture of the Desktop with some Applications open
-![Alternativtext](.doc/2025-04-24-013912_hyprshot.png)
+![Alternativtext](.doc/2025-04-27-235853_hyprshot.png)
 
 The picture was drawn by me, 4Max0, in case you wondered.
 
