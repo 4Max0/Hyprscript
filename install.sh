@@ -5,20 +5,11 @@
 # logfile path
 LOGFILE="logfile.log"
 
-exec > >(tee -a $LOGFILE) 2>&1
-set -x
+exec > >(tee -a $LOGFILE) 2>&1          # Logfile writer
+set -x                                  # Debug mode
+set -e                                  # end on error
 
-###########################################################################################################################################
-# Variables
-###########################################################################################################################################
-# Pacamn Packages
-PACKAGES=$(cat config-files/packages/packages.conf)
-CUSTOM_PACKAGES=$(cat custom-settings/custom_packages.conf)
-
-# Yay Packages
-YAY_PACKAGES=$(cat config-files/packages/yay_packages.conf)
-YAY_CUSTOM_PACKAGES=$(cat custom-settings/yay_custom_packages.conf)
-
+trap 'Error on line $LINENO' ERR
 ###########################################################################################################################################
 # Functions
 ###########################################################################################################################################
@@ -34,11 +25,19 @@ write_log() {
 ###########################################################################################################################################
 # Install packages
 ###########################################################################################################################################
+# Pacamn Packages
+PACKAGES=$(cat config-files/packages/packages.conf)
+CUSTOM_PACKAGES=$(cat custom-settings/custom_packages.conf)
+
+# Yay Packages
+YAY_PACKAGES=$(cat config-files/packages/yay_packages.conf)
+YAY_CUSTOM_PACKAGES=$(cat custom-settings/yay_custom_packages.conf)
+
 # Install packages from pacman
-write_log "installing packages of of pacman"
+write_log "Installing packages of of pacman"
 sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES
 
-write_log "checking for yay"
+write_log "Checking for yay"
 # Install yay if not already
 if ! command -v yay &> /dev/null; then
     write_log "installing yay"
@@ -46,54 +45,85 @@ if ! command -v yay &> /dev/null; then
     (cd yay && makepkg -si)
     rm -rf yay
 else
-    write_log "yay is already installed"
+    write_log "Yay is already installed"
 fi
 
 # install packages from yay
-write_log "installing packages of of yay"
+write_log "Installing packages of of yay"
 yay -Syu $YAY_PACKAGES $YAY_CUSTOM_PACKAGES
 
 ###########################################################################################################################################
-# Enable systems
+# Enable settings
 ###########################################################################################################################################
 # enable sddm
-write_log "enabling sddm"
-sudo systemctl enable sddm.service
+DM=$(basename "$(readlink /etc/systemd/system/display-manager.service)")
+
+write_log "Checking display mananger"
+if [[ -n "$DM" && "$DM" != "sddm.service"]]; then
+    write_log "Found other Display Manager than sddm"
+    write_log "Deactivating $DM"
+    sudo systemctl disable "$DM"
+    sudo systemctl stop "$DM"
+    write_log "Deactivated $DM"
+    write_log "Enabling sddm"
+    sudo systemctl enable sddm.service
+elif [[ ! -L /etc/systemd/system/display-manager.service]]; then
+    write_log "No display manager found"
+    write_log "Enabling sddm"
+    sudo systemctl enable sddm.service
+elif [[ -n "$DM" && "$DM" == "sddm.service"]]; then
+    write_log "sddm already enabled"
+fi
+
+# Set GTK theme
+write_log "Setting GTK Theme"
+gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
 ###########################################################################################################################################
 # Moving configs
 ###########################################################################################################################################
+# Create .config if it doesn't exist
+write_log "Check if .config exists"
+if [[! -d ~/.config]];then
+    write_log "Creating ~/.config"
+    mkdir -p ~/.config
+fi
+
 # sddm configs
-write_log "copying sddm config files into directories"
+write_log "Copying sddm config files into directories"
 sudo cp -p config-files/sddm/sddm.conf /etc/sddm.conf
 sudo cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
 sudo cp -p custom-settings/wallpaper.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
 
 # Waybar configs
-write_log "copying Waybar config files into directories"
+write_log "Copying Waybar config files into directories"
 sudo cp -rf config-files/waybar/ ~/.config/waybar/
 
 # Hyprland and extra configs
-write_log "copying Hyprland config files into directories"
+write_log "Copying Hyprland config files into directories"
 sudo cp -rf config-files/hypr/ ~/.config/
 
 # Hyprshot screenshot directory
-write_log "create Hyprshot Screenshot Directory"
-sudo mkdir -p ~/Pictures/Screenshots
+write_log "Create Hyprshot Screenshot Directory"
+if [[! -d "~/Pictures/Screenshots"]]; then
+    write_log "Creating ~/Pictures/Screenshots"
+    sudo mkdir -p ~/Pictures/Screenshots
+fi
+write_log "Setting owner of ~/Pictures/Screenshots to the user"
 sudo chown $USER:$USER ~/Pictures/Screenshots
 
 # Move the Desktop Wallpaper
+write_log "Checking if ~/Pictures/wallpapers exists"
+if [[! -d ~/Pictures/wallpapers]]; then
+    write_log "Creating ~/Pictures/wallpapers"
+    sudo mkdir -p ~/Pictures/wallpapers
+fi
 write_log "Copying the wallpaper into the directory"
-sudo mkdir -p ~/Pictures/wallpapers
 sudo cp custom-settings/wallpaper.png ~/Pictures/wallpapers/wallpaper.png
 
 # qt6ct config files
 write_log "Copying the qt6ct config files"
 sudo cp -rf config-files/qt6ct ~/.config
-
-# GTK config files
-write_log "Copying the GTK config files"
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
 # Finished setup
 write_log "Finished setup"
