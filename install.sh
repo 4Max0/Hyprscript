@@ -63,7 +63,6 @@ if [[ -n "$DM" && "$DM" != "sddm.service" ]]; then
     write_log "Found other Display Manager than sddm"
     write_log "Deactivating $DM"
     sudo systemctl disable "$DM"
-    sudo systemctl stop "$DM"
     write_log "Deactivated $DM"
     write_log "Enabling sddm"
     sudo systemctl enable sddm.service
