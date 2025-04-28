@@ -3,10 +3,6 @@
 Hyprscript is supposed to be a Hyprland install script. You will be able to install and use Hyprscript, after you install Arch Linux on your device via Archinstall for example.
 What Hyprscript does, is that it install Packages and Configs and configures them, so you don't have to install and configure your Hyprland on Arch Linux manually. [More Details here.](#what-is-being-installed)
 
-> [!CAUTION]
-> It is currently in the works still (as of the 28.04.2025).
-> The install.sh also doesn't support error handling yet so if there is something that doesn't work for any reason it will not notify you and stop instead it will keep going as it is a bash script.
-
 > [!IMPORTANT]
 > Like mentioned [here](config-files/waybar/Disclaimer.md), the Waybar config files are based on the config 
 > of [MinimalSwayFX](https://github.com/mubin6th/MinimalSwayFX), which I liked and chose to base the Waybar config of Hyprscript on. Please check out MinimalSwayFX, if you like the look of the Waybar.
@@ -69,4 +65,22 @@ In similar fashion you will find in the custom-settings directory in two files c
 
 # Keyboard Config:
 
-Will be added later
+The Key Binds are mostly the standard Key Binds, with the 'Super' (Windows Key) being the "mainMod" Bind. Here are some important Binds:
+
+| Keybind                   | Action                                |
+|---------------------------|---------------------------------------|
+| mainMod + Q               | Opens Kitty                           |
+| mainMod + C               | Kill Window                           |
+| mainMod + M               | Exits Hyprland                        |
+| mainMod + E               | Dolphin                               |
+| mainMod + V               | Floating Mode                         |
+| mainMod + R               | Open Rofi                             |
+| mainMod + Number          | Change Workspace                      |
+| mainMod + Shift + Number  | move Application to Workspace         |
+| mainMod + S               | toggle special Workspace              |
+| mainMod + Shift + S       | move Application to special Workspace |
+| mainMod + left Click      | move Application                      |
+| mainMod + right Click     | resize Application                    |
+| mainMod + Shift + L       | Lock screen                           |
+| Print                     | Hyprshot regional Screenshot          |
+ 
