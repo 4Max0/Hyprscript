@@ -35,7 +35,7 @@ YAY_CUSTOM_PACKAGES=$(cat custom-settings/yay_custom_packages.conf)
 
 # Install packages from pacman
 write_log "Installing packages of of pacman"
-sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES
+# sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES
 
 write_log "Checking for yay"
 # Install yay if not already
@@ -50,7 +50,7 @@ fi
 
 # install packages from yay
 write_log "Installing packages of of yay"
-yay -Syu $YAY_PACKAGES $YAY_CUSTOM_PACKAGES
+# yay -Syu $YAY_PACKAGES $YAY_CUSTOM_PACKAGES
 
 ###########################################################################################################################################
 # Enable settings
@@ -59,7 +59,7 @@ yay -Syu $YAY_PACKAGES $YAY_CUSTOM_PACKAGES
 DM=$(basename "$(readlink /etc/systemd/system/display-manager.service)")
 
 write_log "Checking display mananger"
-if [[ -n "$DM" && "$DM" != "sddm.service"]]; then
+if [[ -n "$DM" && "$DM" != "sddm.service" ]]; then
     write_log "Found other Display Manager than sddm"
     write_log "Deactivating $DM"
     sudo systemctl disable "$DM"
@@ -67,11 +67,11 @@ if [[ -n "$DM" && "$DM" != "sddm.service"]]; then
     write_log "Deactivated $DM"
     write_log "Enabling sddm"
     sudo systemctl enable sddm.service
-elif [[ ! -L /etc/systemd/system/display-manager.service]]; then
+elif [[ ! -L /etc/systemd/system/display-manager.service ]]; then
     write_log "No display manager found"
     write_log "Enabling sddm"
     sudo systemctl enable sddm.service
-elif [[ -n "$DM" && "$DM" == "sddm.service"]]; then
+elif [[ -n "$DM" && "$DM" == "sddm.service" ]]; then
     write_log "sddm already enabled"
 fi
 
@@ -84,7 +84,7 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 ###########################################################################################################################################
 # Create .config if it doesn't exist
 write_log "Check if .config exists"
-if [[! -d ~/.config]];then
+if [[ ! -d ~/.config ]]; then
     write_log "Creating ~/.config"
     mkdir -p ~/.config
 fi
@@ -105,7 +105,7 @@ sudo cp -rf config-files/hypr/ ~/.config/
 
 # Hyprshot screenshot directory
 write_log "Create Hyprshot Screenshot Directory"
-if [[! -d "~/Pictures/Screenshots"]]; then
+if [[ ! -d "~/Pictures/Screenshots" ]]; then
     write_log "Creating ~/Pictures/Screenshots"
     sudo mkdir -p ~/Pictures/Screenshots
 fi
@@ -114,7 +114,7 @@ sudo chown $USER:$USER ~/Pictures/Screenshots
 
 # Move the Desktop Wallpaper
 write_log "Checking if ~/Pictures/wallpapers exists"
-if [[! -d ~/Pictures/wallpapers]]; then
+if [[ ! -d ~/Pictures/wallpapers ]]; then
     write_log "Creating ~/Pictures/wallpapers"
     sudo mkdir -p ~/Pictures/wallpapers
 fi
