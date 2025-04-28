@@ -29,10 +29,14 @@ Install your Arch Linux and git then copy the repository with the following comm
 git clone https://github.com/4Max0/Hyprscript.git
 ```
 
-After that move into the directory and run the installation shell script:
+After that move into the directory you cloned of of git:
 
 ```
 cd Hyprscript
+```
+
+Then run the install script:
+```
 bash install.sh
 ```
 
