@@ -103,6 +103,15 @@ sudo cp -rf config-files/waybar/ ~/.config/waybar/
 write_log "Copying Hyprland config files into directories"
 sudo cp -rf config-files/hypr/ ~/.config/
 
+# Change the Keyboard Layout to german via copying my special conf
+# I know this is a kind of stupid way but it works
+write_log "Checking for -de flag"
+for arg in "$@"; do
+    if [[ "$arg" == "-de" ]]; then
+        sudo cp -p config-files/hypr-special/hyprland-de.conf ~/.config/hypr/hyprland.conf
+    fi
+done
+
 # Hyprshot screenshot directory
 write_log "Create Hyprshot Screenshot Directory"
 if [[ ! -d "~/Pictures/Screenshots" ]]; then

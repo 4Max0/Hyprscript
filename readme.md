@@ -8,7 +8,7 @@ What Hyprscript does, is that it install Packages and Configs and configures the
 > The install.sh also doesn't support error handling yet so if there is something that doesn't work for any reason it will not notify you and stop instead it will keep going as it is a bash script.
 
 > [!IMPORTANT]
-> Like mentioned [here](config-files/Disclaimer.md), the Waybar config files are based on the config 
+> Like mentioned [here](config-files/waybar/Disclaimer.md), the Waybar config files are based on the config 
 > of [MinimalSwayFX](https://github.com/mubin6th/MinimalSwayFX), which I liked and chose to base the Waybar config of Hyprscript on. Please check out MinimalSwayFX, if you like the look of the Waybar.
 
 # How does it Look:
@@ -34,9 +34,16 @@ git clone https://github.com/4Max0/Hyprscript.git
 ```
 
 After that move into the directory and run the installation shell script:
+
 ```
 cd Hyprscript
 bash install.sh
+```
+
+If you're German like me, you can use the '-de' flag to set the Keyboard Layout to 'de':
+
+```
+bash install.sh -de
 ```
 
 If everything worked out don't forget to remove the cloned repository:
