@@ -35,7 +35,7 @@ YAY_CUSTOM_PACKAGES=$(cat custom-settings/yay_custom_packages.conf)
 
 # Install packages from pacman
 write_log "Installing packages of of pacman"
-# sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES
+sudo pacman -Syu $PACKAGES $CUSTOM_PACKAGES
 
 write_log "Checking for yay"
 # Install yay if not already
@@ -50,7 +50,7 @@ fi
 
 # install packages from yay
 write_log "Installing packages of of yay"
-# yay -Syu $YAY_PACKAGES $YAY_CUSTOM_PACKAGES
+yay -Syu $YAY_PACKAGES $YAY_CUSTOM_PACKAGES
 
 ###########################################################################################################################################
 # Enable settings
