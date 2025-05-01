@@ -81,7 +81,8 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 # Set the GHOSTTY theme
 write_log "Checking if ghostty is installed"
 if [ -d ~/.config/ghostty ]; then
-    echo "theme=VibrantInk" >> ~/.config/ghostty/config
+    write_log "Ghostty is installed writing into the config"
+    sudo echo "theme=VibrantInk" >> ~/.config/ghostty/config
 fi
 
 # Create .config if it doesn't exist
