@@ -87,4 +87,4 @@ The Key Binds are mostly the standard Key Binds, with the 'Super' (Windows Key) 
 | mainMod + right Click     | resize Application                    |
 | mainMod + Shift + L       | Lock screen                           |
 | Print                     | Hyprshot regional Screenshot          |
- 
+| mainMod + F               | Application fullscreen mode           |

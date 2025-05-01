@@ -53,7 +53,7 @@ write_log "Installing packages of of yay"
 yay -Syu $YAY_PACKAGES $YAY_CUSTOM_PACKAGES
 
 ###########################################################################################################################################
-# Enable settings
+# Enable settings and Moving configs
 ###########################################################################################################################################
 # enable sddm
 DM=$(basename "$(readlink /etc/systemd/system/display-manager.service)")
@@ -78,9 +78,12 @@ fi
 write_log "Setting GTK Theme"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
-###########################################################################################################################################
-# Moving configs
-###########################################################################################################################################
+# Set the GHOSTTY theme
+write_log "Checking if ghostty is installed"
+if [ -d ~/.config/ghostty ]; then
+    echo "theme=VibrantInk" >> ~/.config/ghostty/config
+fi
+
 # Create .config if it doesn't exist
 write_log "Check if .config exists"
 if [[ ! -d ~/.config ]]; then
