@@ -98,6 +98,16 @@
         "on-click": "hyprctl dispatch exec ['float'] pavucontrol"
     },
 
+    // New Version using wlogout
+    "custom/power": {
+        "format": "⏻ Power",
+        "tooltip": true,
+        "tooltip-format": "Power settings",
+        "on-click": "wlogout"
+    },
+
+    /*
+    // Old version
     "custom/power": {
         "format": "⏻ Power",
         "tooltip": true,
@@ -110,6 +120,7 @@
             "sleep": "systemctl sleep"
         }
     },
+    */
 
     "custom/bluetooth": {
         "format": "BT",
