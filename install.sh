@@ -100,7 +100,7 @@ sudo cp -p custom-settings/wallpaper.png /usr/share/sddm/themes/sugar-candy/Back
 
 # Waybar configs
 write_log "Copying Waybar config files into directories"
-sudo cp -rf config-files/waybar/ ~/.config/waybar/
+sudo cp -rf config-files/waybar/ ~/.config/
 
 # Hyprland and extra configs
 write_log "Copying Hyprland config files into directories"
