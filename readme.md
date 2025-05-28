@@ -65,14 +65,20 @@ In the config files directory you wild find a bunch of, guess what, config files
 
 In similar fashion you will find in the custom-settings directory in two files called [custom_packages.conf](custom-settings/custom_packages.conf) and [yay_custom_packages.conf](custom-settings/yay_custom_packages.conf). In those files you can add or remove packages, if you want before running the script.
 
-## ZSH:
+Anyways some important components:
+
+**ZSH:**
 The Script will change your shell to zsh.
 It will install some cool plugins like zsh syntax highlighting, zsh completions and autosuggestions, but also fzf tab completion. 
 
-## TMUX:
+**TMUX:**
 Tmux is going to be installed on the system by running this script.
 By typing `tsession` in the terminal you will be able to select a tmux session, if you're not already in one.
 If you also have no current session, the script will create one called `default`.
+
+**NVIM:**
+Neovim featuring plugins like `telescope`, `nerdtree` and the `kanegawa` theme.
+The plugins are being installed and managed by [Lazy Neovim](https://github.com/folke/lazy.nvim).
 
 # Keyboard Config:
 
