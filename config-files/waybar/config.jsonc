@@ -50,7 +50,7 @@
     },
 
     "cpu": {
-        "format": " CPU {usage}%",
+        "format": "  CPU {usage}%",
         "interval": 2,
 
         "states": {
@@ -78,8 +78,8 @@
     },
 
     "network": {
-        "format-wifi" : " WIFI  | ↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
-        "format-ethernet": " ETH  | ↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
+        "format-wifi" : "   WIFI  | ↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
+        "format-ethernet": "  ETH  | ↓ {bandwidthDownBits} ↑ {bandwidthUpBits}",
         "format-disconnected" : " no network",
         "interval": 5,
         "tooltip": false
@@ -90,7 +90,7 @@
         "max-volume": 150,
         "tooltip": true,
         "tooltip-format": "Scroll to lower or higher volume",
-        "format": " Vol {volume}%",
+        "format": "  Vol {volume}%",
         "format-bluetooth": "Vol {volume}%",
         "nospacing": 1,
         "on-click": "hyprctl dispatch exec ['float'] pavucontrol"
@@ -98,7 +98,7 @@
 
     // New Version using wlogout
     "custom/power": {
-        "format": " Power",
+        "format": "  Power",
         "tooltip": true,
         "tooltip-format": "Power settings",
         "on-click": "wlogout"
@@ -107,7 +107,7 @@
     /*
     // Old version
     "custom/power": {
-        "format": " Power",
+        "format": "  Power",
         "tooltip": true,
         "tooltip-format": "Power settings",
         "menu": "on-click",

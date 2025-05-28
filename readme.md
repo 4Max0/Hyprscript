@@ -85,6 +85,6 @@ The Key Binds are mostly the standard Key Binds, with the 'Super' (Windows Key) 
 | mainMod + Shift + S       | move Application to special Workspace |
 | mainMod + left Click      | move Application                      |
 | mainMod + right Click     | resize Application                    |
-| mainMod + Shift + L       | Lock screen                           |
+| mainMod + L               | Lock screen                           |
 | Print                     | Hyprshot regional Screenshot          |
 | mainMod + F               | Application fullscreen mode           |
