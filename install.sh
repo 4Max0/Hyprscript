@@ -78,13 +78,6 @@ fi
 write_log "Setting GTK Theme"
 gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'
 
-# Set the GHOSTTY theme
-write_log "Checking if ghostty is installed"
-if [ -d ~/.config/ghostty ]; then
-    write_log "Ghostty is installed writing into the config"
-    sudo echo "theme=VibrantInk" >> ~/.config/ghostty/config
-fi
-
 # Create .config if it doesn't exist
 write_log "Check if .config exists"
 if [[ ! -d ~/.config ]]; then
@@ -100,7 +93,7 @@ sudo cp -p custom-settings/wallpaper.png /usr/share/sddm/themes/sugar-candy/Back
 
 # Waybar configs
 write_log "Copying Waybar config files into directories"
-sudo cp -rf config-files/waybar/ ~/.config/waybar/
+sudo cp -rf config-files/waybar/ ~/.config/
 
 # Hyprland and extra configs
 write_log "Copying Hyprland config files into directories"
@@ -108,7 +101,7 @@ sudo cp -rf config-files/hypr/ ~/.config/
 
 # Change the Keyboard Layout to german via copying my special conf
 # I know this is a kind of stupid way but it works
-write_log "Checking for -de flag"
+write_log "Checking for < flag"
 for arg in "$@"; do
     if [[ "$arg" == "-de" ]]; then
         sudo cp -p config-files/hypr-special/hyprland-de.conf ~/.config/hypr/hyprland.conf
@@ -132,6 +125,34 @@ if [[ ! -d ~/Pictures/wallpapers ]]; then
 fi
 write_log "Copying the wallpaper into the directory"
 sudo cp custom-settings/wallpaper.png ~/Pictures/wallpapers/wallpaper.png
+
+# Copy the alacritty files
+write_log "Copying alacritty files"
+sudo cp -rf config-files/alacritty ~/.config
+
+# Copy the tmux files
+write_log "copy tmux config"
+sudo cp config-files/.tmux.conf ~/.tmux.conf
+
+# copy the tsession script
+write_log "Create the tsession terminal alias"
+sudo cp config-files/.tsession.sh ~/.tsession.sh
+sudo chown $USER:$USER ~/.tsession.sh
+
+# Change shell to zsh and copy files
+write_log "change shell to zsh"
+if [ "$(getent passwd "$USER" | cut -d: -f7)" = "/bin/zsh" ]; then
+    write_log "Already in zsh"
+else
+    write_log "change to zsh"
+    chsh -s $(which zsh) $USER
+fi
+write_log "copy zsh files"
+sudo cp config-files/.zshrc ~/.zshrc
+
+# Copy the neovim config files
+write_log "copying neovim files"
+cp -rf config-files/nvim ~/.config
 
 # qt6ct config files
 write_log "Copying the qt6ct config files"

@@ -11,12 +11,11 @@ What Hyprscript does, is that it install Packages and Configs and configures the
 
 Here are some Preview Pictures to look at:
 
-### Picture of the Desktop
+![Picture of the Desktop](.doc/2025-05-28-201058_hyprshot.png)
 
-![Alternativtext](.doc/2025-04-27-234330_hyprshot.png)
+![Picture of the terminal and rofi open](.doc/2025-05-28-204303_hyprshot.png)
 
-### Picture of the Desktop with some Applications open
-![Alternativtext](.doc/2025-04-27-235853_hyprshot.png)
+![Picture of neovim](.doc/2025-05-28-204046_hyprshot.png)
 
 The picture was drawn by me, 4Max0, in case you wondered.
 
@@ -73,10 +72,10 @@ The Key Binds are mostly the standard Key Binds, with the 'Super' (Windows Key) 
 
 | Keybind                   | Action                                |
 |---------------------------|---------------------------------------|
-| mainMod + Q               | Opens Kitty                           |
+| mainMod + Q               | Opens Alacritty                       |
 | mainMod + C               | Kill Window                           |
 | mainMod + M               | Exits Hyprland                        |
-| mainMod + E               | Dolphin                               |
+| mainMod + E               | Open yazi                             |
 | mainMod + V               | Floating Mode                         |
 | mainMod + R               | Open Rofi                             |
 | mainMod + Number          | Change Workspace                      |
