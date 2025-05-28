@@ -3,10 +3,6 @@
 Hyprscript is supposed to be a Hyprland install script. You will be able to install and use Hyprscript, after you install Arch Linux on your device via Archinstall for example.
 What Hyprscript does, is that it install Packages and Configs and configures them, so you don't have to install and configure your Hyprland on Arch Linux manually. [More Details here.](#what-is-being-installed)
 
-> [!IMPORTANT]
-> Like mentioned [here](config-files/waybar/Disclaimer.md), the Waybar config files are based on the config 
-> of [MinimalSwayFX](https://github.com/mubin6th/MinimalSwayFX), which I liked and chose to base the Waybar config of Hyprscript on. Please check out MinimalSwayFX, if you like the look of the Waybar.
-
 # How does it Look:
 
 Here are some Preview Pictures to look at:
@@ -68,6 +64,15 @@ If you are rightfully paranoid, with what this Project does to your PC, you migh
 In the config files directory you wild find a bunch of, guess what, config files. With also a directory called [packages](config-files/packages/), where you can look at all the necessary Pacman and yay packages that are being installed (yes HTop and Fastfetch are necessary if you use Linux).
 
 In similar fashion you will find in the custom-settings directory in two files called [custom_packages.conf](custom-settings/custom_packages.conf) and [yay_custom_packages.conf](custom-settings/yay_custom_packages.conf). In those files you can add or remove packages, if you want before running the script.
+
+## ZSH:
+The Script will change your shell to zsh.
+It will install some cool plugins like zsh syntax highlighting, zsh completions and autosuggestions, but also fzf tab completion. 
+
+## TMUX:
+Tmux is going to be installed on the system by running this script.
+By typing `tsession` in the terminal you will be able to select a tmux session, if you're not already in one.
+If you also have no current session, the script will create one called `default`.
 
 # Keyboard Config:
 
