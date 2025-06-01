@@ -89,7 +89,7 @@ fi
 write_log "Copying sddm config files into directories"
 sudo cp -p config-files/sddm/sddm.conf /etc/sddm.conf
 sudo cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
-sudo cp -p custom-settings/wallpaper.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
+sudo cp -rf config-files/wallpaper/w01.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
 
 # Waybar configs
 write_log "Copying Waybar config files into directories"
