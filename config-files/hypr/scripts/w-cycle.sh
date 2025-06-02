@@ -30,27 +30,31 @@ fi
 
 # Get size
 current_image="${image_files[$CURRENT]}"
-    
-# Load the new wallpaper into hyprpaper    
-hyprctl hyprpaper reload ", $current_image"
-    
-# Also update the hyprpaper.conf so it starts with current on the next restart
-cat <<-EOF > "$HOME/.config/hypr/hyprpaper.conf"
-preload = $current_image
-wallpaper = , $current_image
-EOF
 
-# write the new wallpaper into hyprlock
-cat <<-EOF > "$HOME/.config/hypr/hyprlock-background.conf"
-background {
-    monitor =
-    path = $current_image
-    color = rgba(25, 20, 20, 1.0)
-    blur_passes = 2
-    blur_size = 1
-}
-EOF
+# laod wallpaper
+# Load the new wallpaper into hyprpaper
+# hyprctl hyprpaper reload ", $current_image"
+# Load the new wallpaper into swww
+swww img "$current_image" --transition-type center --transition-duration 1
+
+#
+# If you want to use Hyprpaper (wallpapers with not transitions uncomment the code below and comment out the line above mentioning swww) 
+#
+## Also update the hyprpaper.conf so it starts with current on the next restart
+#cat <<-EOF > "$HOME/.config/hypr/hyprpaper.conf"
+#preload = $current_image
+#wallpaper = , $current_image
+#EOF
+## write the new wallpaper into hyprlock
+#cat <<-EOF > "$HOME/.config/hypr/hyprlock-background.conf"
+#background {
+#    monitor =
+#    path = $current_image
+#    color = rgba(25, 20, 20, 1.0)
+#    blur_passes = 2
+#    blur_size = 1
+#}
+#EOF
 
 # Update current
 echo "$CURRENT" > "$HOME/.config/hypr/scripts/current.conf"
-
