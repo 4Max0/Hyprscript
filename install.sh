@@ -87,9 +87,9 @@ fi
 
 # sddm configs
 write_log "Copying sddm config files into directories"
-cp -p config-files/sddm/sddm.conf /etc/sddm.conf
-cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
-# cp -f config-files/wallpapers/w01.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
+sudo cp -p config-files/sddm/sddm.conf /etc/sddm.conf
+sudo cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
+sudo cp -f config-files/wallpapers/w01.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
 
 # Waybar configs
 write_log "Copying Waybar config files into directories"
@@ -124,7 +124,7 @@ if [[ ! -d ~/Pictures/wallpapers ]]; then
     mkdir -p ~/Pictures/wallpapers
 fi
 write_log "Copying the wallpaper into the directory"
-cp config-files/wallpapers/w01.png ~/Pictures/wallpapers/wallpaper.png
+cp config-files/wallpapers/w01.png ~/Pictures/wallpapers/w01.png
 
 # Copy the alacritty files
 write_log "Copying alacritty files"

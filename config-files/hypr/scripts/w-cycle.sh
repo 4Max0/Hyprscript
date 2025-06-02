@@ -32,7 +32,7 @@ fi
 current_image="${image_files[$CURRENT]}"
     
 # Load the new wallpaper into hyprpaper    
-hyprctl hyprpaper reload "$current_image"
+hyprctl hyprpaper reload ", $current_image"
     
 # Also update the hyprpaper.conf so it starts with current on the next restart
 cat <<-EOF > "$HOME/.config/hypr/hyprpaper.conf"
