@@ -62,14 +62,14 @@ write_log "Checking display mananger"
 if [[ -n "$DM" && "$DM" != "sddm.service" ]]; then
     write_log "Found other Display Manager than sddm"
     write_log "Deactivating $DM"
-    sudo systemctl disable "$DM"
+    systemctl disable "$DM"
     write_log "Deactivated $DM"
     write_log "Enabling sddm"
     sudo systemctl enable sddm.service
 elif [[ ! -L /etc/systemd/system/display-manager.service ]]; then
     write_log "No display manager found"
     write_log "Enabling sddm"
-    sudo systemctl enable sddm.service
+    systemctl enable sddm.service
 elif [[ -n "$DM" && "$DM" == "sddm.service" ]]; then
     write_log "sddm already enabled"
 fi
@@ -87,17 +87,17 @@ fi
 
 # sddm configs
 write_log "Copying sddm config files into directories"
-sudo cp -p config-files/sddm/sddm.conf /etc/sddm.conf
-sudo cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
-sudo cp -rf config-files/wallpaper/w01.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
+cp -p config-files/sddm/sddm.conf /etc/sddm.conf
+cp -p config-files/sddm-sugar-candy/theme.conf /usr/share/sddm/themes/sugar-candy/theme.conf
+# cp -f config-files/wallpapers/w01.png /usr/share/sddm/themes/sugar-candy/Backgrounds/
 
 # Waybar configs
 write_log "Copying Waybar config files into directories"
-sudo cp -rf config-files/waybar/ ~/.config/
+cp -rf config-files/waybar/ ~/.config/
 
 # Hyprland and extra configs
 write_log "Copying Hyprland config files into directories"
-sudo cp -rf config-files/hypr/ ~/.config/
+cp -rf config-files/hypr/ ~/.config/
 
 # Change the Keyboard Layout to german via copying my special conf
 # I know this is a kind of stupid way but it works
@@ -112,32 +112,32 @@ done
 write_log "Create Hyprshot Screenshot Directory"
 if [[ ! -d "~/Pictures/Screenshots" ]]; then
     write_log "Creating ~/Pictures/Screenshots"
-    sudo mkdir -p ~/Pictures/Screenshots
+    mkdir -p ~/Pictures/Screenshots
 fi
 write_log "Setting owner of ~/Pictures/Screenshots to the user"
-sudo chown $USER:$USER ~/Pictures/Screenshots
+# sudo chown $USER:$USER ~/Pictures/Screenshots
 
 # Move the Desktop Wallpaper
 write_log "Checking if ~/Pictures/wallpapers exists"
 if [[ ! -d ~/Pictures/wallpapers ]]; then
     write_log "Creating ~/Pictures/wallpapers"
-    sudo mkdir -p ~/Pictures/wallpapers
+    mkdir -p ~/Pictures/wallpapers
 fi
 write_log "Copying the wallpaper into the directory"
-sudo cp custom-settings/wallpaper.png ~/Pictures/wallpapers/wallpaper.png
+cp config-files/wallpapers/w01.png ~/Pictures/wallpapers/wallpaper.png
 
 # Copy the alacritty files
 write_log "Copying alacritty files"
-sudo cp -rf config-files/alacritty ~/.config
+cp -rf config-files/alacritty ~/.config
 
 # Copy the tmux files
 write_log "copy tmux config"
-sudo cp config-files/.tmux.conf ~/.tmux.conf
+cp config-files/.tmux.conf ~/.tmux.conf
 
 # copy the tsession script
 write_log "Create the tsession terminal alias"
-sudo cp config-files/.tsession.sh ~/.tsession.sh
-sudo chown $USER:$USER ~/.tsession.sh
+cp config-files/.tsession.sh ~/.tsession.sh
+# sudo chown $USER:$USER ~/.tsession.sh
 
 # Change shell to zsh and copy files
 write_log "change shell to zsh"
@@ -148,7 +148,7 @@ else
     chsh -s $(which zsh) $USER
 fi
 write_log "copy zsh files"
-sudo cp config-files/.zshrc ~/.zshrc
+cp config-files/.zshrc ~/.zshrc
 
 # Copy the neovim config files
 write_log "copying neovim files"
@@ -156,7 +156,7 @@ cp -rf config-files/nvim ~/.config
 
 # qt6ct config files
 write_log "Copying the qt6ct config files"
-sudo cp -rf config-files/qt6ct ~/.config
+cp -rf config-files/qt6ct ~/.config
 
 # Finished setup
 write_log "Finished setup"
