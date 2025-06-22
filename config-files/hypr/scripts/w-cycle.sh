@@ -45,16 +45,17 @@ swww img "$current_image" --transition-type center --transition-duration 1
 #preload = $current_image
 #wallpaper = , $current_image
 #EOF
-## write the new wallpaper into hyprlock
-#cat <<-EOF > "$HOME/.config/hypr/hyprlock-background.conf"
-#background {
-#    monitor =
-#    path = $current_image
-#    color = rgba(25, 20, 20, 1.0)
-#    blur_passes = 2
-#    blur_size = 1
-#}
-#EOF
+
+# write the new wallpaper into hyprlock
+cat <<-EOF > "$HOME/.config/hypr/hyprlock-background.conf"
+background {
+    monitor =
+    path = $current_image
+    color = rgba(25, 20, 20, 1.0)
+    blur_passes = 2
+    blur_size = 1
+}
+EOF
 
 wal -i "$current_image" --no-apply tmux
 
