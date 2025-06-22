@@ -101,3 +101,4 @@ The Key Binds are mostly the standard Key Binds, with the 'Super' (Windows Key) 
 | mainMod + L               | Lock screen                           |
 | Print                     | Hyprshot regional Screenshot          |
 | mainMod + F               | Application fullscreen mode           |
+| mainMod + W               | Change wallpapers you have            |
