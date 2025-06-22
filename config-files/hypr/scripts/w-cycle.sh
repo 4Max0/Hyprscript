@@ -56,5 +56,7 @@ swww img "$current_image" --transition-type center --transition-duration 1
 #}
 #EOF
 
+wal -i "$current_image" --no-apply tmux
+
 # Update current
 echo "$CURRENT" > "$HOME/.config/hypr/scripts/current.conf"
