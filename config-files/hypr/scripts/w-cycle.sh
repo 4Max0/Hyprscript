@@ -23,6 +23,9 @@ if [ "$image_count" -lt 1 ]; then
     exit
 fi
 
+# Sort the array by the file name so they're ordered (else they're by filetype)
+image_files=($(printf "%s\n" "${image_files[@]}" | sort))
+
 # Check if current has a valid size
 if [ "$CURRENT" -ge "$image_count" ]; then
     CURRENT=0
@@ -57,7 +60,7 @@ background {
 }
 EOF
 
-wal -i "$current_image" --no-apply tmux
+wal -i "$current_image"
 
 # Update current
 echo "$CURRENT" > "$HOME/.config/hypr/scripts/current.conf"

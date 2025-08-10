@@ -1,11 +1,9 @@
 * {
-    border: none;
-    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bolder;
+    font-size: 15px;
+    background-color: transparent;
     min-height: 0;
-    font-family: "iosevka nerd font", FontAwesome;
-    font-weight: 700;
-    font-size: 14px;
-    padding: 0;
     transition-property: all;
     transition-duration: 0.3s;
     transition: all 0.2s ease;
@@ -16,27 +14,23 @@
 #tooltip label,
 #clock,
 #cpu,
-#battery,
 #custom-power,
 #memory,
 #network,
 #custom-bluetooth,
 #pulseaudio {
-    margin: 4px 2px 2px 4px;
+    margin: 2px 4px 2px 4px;
     background-color: rgba(0, 0, 0, 0.75);
     border: rgba(0, 0, 0, 0.75);
     padding: 6px 12px;
-    border-radius: 10;
+    border-radius: 10px;
 }
 
 #cpu.critical,
-#memory.critical,
-#battery.warning,
-#battery.critical,
-#battery.urgent {
-    background-color: rgba(193, 74, 74, 0.75);
-    border: 2px solid rgba(193, 74, 74, 0.75);
-    color: rgba(0, 0, 0, 1);
+#memory.critical {
+    background-color: rgba(0, 0, 0, 0.75);
+    border: rgba(0, 0, 0, 0.75);
+    color: rgba(255, 255, 255, 1);
 }
 
 window#waybar {
@@ -74,8 +68,8 @@ tooltip {
 tooltip label {
     background-color: rgba(0, 0, 0, 0.75);
     border: 2px rgba(0, 0, 0, 0.75);
-    border-radius: 10;
-    padding: 6px 12px;
+    border-radius: 10px;
+    padding: 6px 6px;
 }
 
 #tray menu {
@@ -83,5 +77,5 @@ tooltip label {
     background-color: rgba(0, 0, 0, 0.75);
     border: 2px solid rgba(0, 0, 0, 0.75);
     border-radius: 14px;
-    padding: 13;
+    padding: 13px;
 }
